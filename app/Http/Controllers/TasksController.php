@@ -43,10 +43,11 @@ class TasksController extends Controller
         $task = new Task;
         $task->status  = $request->status;
         $task->content = $request->content;
+        $task->user_id = $request->user()->id;
         $task->save();
 
         // トップページへリダイレクトさせる
-        return redirect('/');
+        return redirect('tasks');
     }
 
     // getでtasks/（任意のid）にアクセスされた場合の「取得表示処理」
@@ -88,6 +89,7 @@ class TasksController extends Controller
         // メッセージを更新
         $task->status  = $request->status;
         $task->content = $request->content;
+        $task->user_id = $request->user()->id;
         $task->save();
 
         // トップページへリダイレクトさせる
