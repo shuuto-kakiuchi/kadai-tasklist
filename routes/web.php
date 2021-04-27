@@ -23,6 +23,7 @@
     // もしくは別の場所でidの値からユーザーを取得する必要がある？
     
 
+/*
     Route::group(['middleware' => ['auth']], function () {
         // 全部書いたらonlyの意味がない
         Route::resource('tasks','TasksController',['only' => ['edit','show','store','destroy']]);
