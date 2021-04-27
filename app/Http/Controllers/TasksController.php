@@ -12,11 +12,23 @@ class TasksController extends Controller
     public function index()
     {
         //
-        $tasks = Task::all();
+        $data = [];
+        if (\Auth::check()) {
+        $user = \Auth::user();
+            
+        //$tasks = Task::all();
+        
+        $tasks = $user -> tasks()->orderBy('created_at','desc')->paginate(10);
+        
+        $data =[
+            'user' => $user,
+            'tasks' => $tasks,
+            ];
         
         return view("tasks.index",[
             "tasks" => $tasks,
             ]);
+        }
     }
 
     // getでtasks/createにアクセスされた場合の「新規登録画面表示処理」

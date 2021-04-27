@@ -15,11 +15,16 @@
     Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
     
     
-    //Route::resource('tasks', 'TasksController'); 
-       
-       
-    // Route::get('tasks', 'TasksController@index');
+    // この表記だとすべてのユーザーがすべてのタスクに触れてしまう
+    Route::resource('tasks', 'TasksController'); 
     
+    
+    // ここの使い方がいまいちわかってないからユーザー毎に分けられてない？
+    // もしくは別の場所でidの値からユーザーを取得する必要がある？
+    
+
     Route::group(['middleware' => ['auth']], function () {
-        Route::resource('tasks','TasksController',['only' => ['index','create','show', 'store','edit','destroy']]);
+        // 全部書いたらonlyの意味がない
+        Route::resource('tasks','TasksController',['only' => ['edit','show','store','destroy']]);
+    
 });
