@@ -17,11 +17,6 @@
     
     // この表記だとすべてのユーザーがすべてのタスクに触れてしまう
     Route::resource('tasks', 'TasksController'); 
-    
-    
-    // ここの使い方がいまいちわかってないからユーザー毎に分けられてない？
-    // もしくは別の場所でidの値からユーザーを取得する必要がある？
-    
 
 /*
     Route::group(['middleware' => ['auth']], function () {
