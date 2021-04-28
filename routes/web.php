@@ -4,6 +4,7 @@
         return view('welcome');
     });
     
+    
     // ユーザ登録
     Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
     Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -18,10 +19,9 @@
     // この表記だとすべてのユーザーがすべてのタスクに触れてしまう
     Route::resource('tasks', 'TasksController'); 
 
-/*
+
     Route::group(['middleware' => ['auth']], function () {
         // 全部書いたらonlyの意味がない
-        Route::resource('tasks','TasksController',['only' => ['edit','show','store','destroy']]);
+        Route::resource('tasks','TasksController',['only' => ['edit','store','destroy']]);
     
 });
-*/
